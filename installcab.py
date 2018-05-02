@@ -101,6 +101,18 @@ def process_files(output_files):
         f.write(out)
     install_regfile(tmpdir, "full.reg")
 
+def find_wineprefix_arch(prefix_path):
+    system_reg_file = os.path.join(prefix_path, 'user.reg')
+    with open(system_reg_file) as f:
+        for line in system_reg_file.readlines():
+            if line.startswith("#arch=win32"):
+                # ok
+                return 'win32'
+            elif line.startswith("#arch=win64"):
+                print("64 bit prefix not supported yet!")
+                sys.exit(1)
+        print("Could not determine wineprefix arch!")
+        sys.exit(1)
 
 #######################################
 # Main
@@ -117,13 +129,15 @@ if __name__ == '__main__':
         sys.exit(0)
     if len(sys.argv) < 4 and not "WINEPREFIX" in os.environ:
         print("You need to set WINEPREFIX for this to work!")
-        sys.exit(0)
+        sys.exit(1)
 
     # setup
     if len(sys.argv) < 4:
         wineprefix = os.environ["WINEPREFIX"]
     else:
         wineprefix = sys.argv[3]
+
+    check_wineprefix_arch(wineprefix)
 
     if len(sys.argv) == 5:
         winebin = sys.argv[4]
