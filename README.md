@@ -9,19 +9,26 @@ The software is  **experimental** so you should try it in a fresh wineprefix or 
 ## Usage:
 
 ```
-python cabinstall.py cabfile filter [wineprefix_path]
+python installcab.py cabfile filter [wineprefix_path]
 ```
 
-- cabfile: an exe installer that can be extracted with cabextract
+- cabfile: an exe installer or cab file that can be extracted with cabextract
 - filter: a filter for the components inside the cab file (will match anywhere in available files inside the cabinet)
 - wineprefix_path: you can set this, otherwise it will try to get from your WINEPREFIX environment variable
-- wine: wine binary name, in case you need to run this with wine64 (only used for importing registry entries)
 
-## Example
+## Examples
 
 ```
-python cabinstall.py ~/.cache/winetricks/win7sp1/windows6.1-KB976932-X86.exe x86_microsoft-windows-mediafoundation"
+python installcab.py ~/.cache/winetricks/win7sp1/windows6.1-KB976932-X86.exe x86_microsoft-windows-mediafoundation"
 ```
+
+will extract and install any manifest files and dlls with 'x86_microsoft-windows-mediafoundation' in their path.
+
+```
+python installcab.py ~/.cache/winetricks/win7sp1/windows6.1-KB976932-X64.exe wmadmod
+```
+
+will extract and install any manifest files and dlls with 'wmadmod' in their path.
 
 You can also try the [install-mf.sh](install-mf.sh) file that installs WMF components from win7sp1 installer. There is also [install-mf-64.sh](install-mf-64.sh) for installing into a 64 bit wineprefix.
 
