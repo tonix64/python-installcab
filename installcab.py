@@ -33,6 +33,17 @@ dest_map = {
     "win32:win32": "System32"
 }
 
+def check_wineprefix_arch(prefix_path):
+    system_reg_file = os.path.join(prefix_path, 'user.reg')
+    with open(system_reg_file) as f:
+        for line in f.readlines():
+            if line.startswith("#arch=win32"):
+                # ok
+                return 'win32'
+            elif line.startswith("#arch=win64"):
+                return 'win64'
+        bad_exit("Could not determine wineprefix arch!")
+
 def get_system32_realdir(arch):
     return dest_map[winearch+':'+arch]
 
@@ -110,7 +121,7 @@ def parse_manifest_arch(elmt):
     if not arch in arch_map:
         bad_exit("Unknown processor architecture %s" % arch)
     arch = arch_map[arch]
-    if arch == 'win64' and winearch == 'win32':
+    if (arch == 'win64' or arch == 'wow64') and winearch == 'win32':
         bad_exit("Invalid 64 bit assembly for 32 bit system!")
     return arch
 
@@ -178,17 +189,6 @@ def process_files(output_files):
 
     for file_path, arch in reg_files:
         install_regfile(tmpdir, file_path+".reg", arch)
-
-def check_wineprefix_arch(prefix_path):
-    system_reg_file = os.path.join(prefix_path, 'user.reg')
-    with open(system_reg_file) as f:
-        for line in f.readlines():
-            if line.startswith("#arch=win32"):
-                # ok
-                return 'win32'
-            elif line.startswith("#arch=win64"):
-                return 'win64'
-        bad_exit("Could not determine wineprefix arch!")
 
 #######################################
 # Main
