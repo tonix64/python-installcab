@@ -1,7 +1,7 @@
 #! /bin/bash
 DIRECTORY=`dirname $(realpath $0)`
 $DIRECTORY/installcab.py ~/.cache/winetricks/win7sp1/windows6.1-KB976932-X64.exe mediafoundation
-$DIRECTORY/installcab.py ~/.cache/winetricks/win7sp1/windows6.1-KB976932-X64.exe windows-mf_
+$DIRECTORY/installcab.py ~/.cache/winetricks/win7sp1/windows6.1-KB976932-X64.exe mf_
 $DIRECTORY/installcab.py ~/.cache/winetricks/win7sp1/windows6.1-KB976932-X64.exe mfreadwrite
 $DIRECTORY/installcab.py ~/.cache/winetricks/win7sp1/windows6.1-KB976932-X64.exe wmadmod
 $DIRECTORY/installcab.py ~/.cache/winetricks/win7sp1/windows6.1-KB976932-X64.exe wmvdecod
