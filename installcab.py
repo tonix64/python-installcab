@@ -34,11 +34,10 @@ dest_map = {
 }
 
 def check_wineprefix_arch(prefix_path):
-    system_reg_file = os.path.join(prefix_path, 'user.reg')
+    system_reg_file = os.path.join(prefix_path, 'system.reg')
     with open(system_reg_file) as f:
         for line in f.readlines():
             if line.startswith("#arch=win32"):
-                # ok
                 return 'win32'
             elif line.startswith("#arch=win64"):
                 return 'win64'
