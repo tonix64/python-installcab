@@ -101,10 +101,10 @@ def process_files(output_files):
         f.write(out)
     install_regfile(tmpdir, "full.reg")
 
-def find_wineprefix_arch(prefix_path):
+def check_wineprefix_arch(prefix_path):
     system_reg_file = os.path.join(prefix_path, 'user.reg')
     with open(system_reg_file) as f:
-        for line in system_reg_file.readlines():
+        for line in f.readlines():
             if line.startswith("#arch=win32"):
                 # ok
                 return 'win32'
