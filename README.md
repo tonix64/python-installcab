@@ -9,11 +9,11 @@ The software is  **experimental** so you should try it in a fresh wineprefix or 
 ## Usage:
 
 ```
-python cabinstall.py cabfile component [wineprefix_path]
+python cabinstall.py cabfile filter [wineprefix_path]
 ```
 
 - cabfile: an exe installer that can be extracted with cabextract
-- component: a prefix for one of the components inside the cab file
+- filter: a filter for the components inside the cab file (will match anywhere in available files inside the cabinet)
 - wineprefix_path: you can set this, otherwise it will try to get from your WINEPREFIX environment variable
 - wine: wine binary name, in case you need to run this with wine64 (only used for importing registry entries)
 
