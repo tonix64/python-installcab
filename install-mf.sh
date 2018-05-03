@@ -9,4 +9,4 @@ $DIRECTORY/installcab.py ~/.cache/winetricks/win7sp1/windows6.1-KB976932-X86.exe
 # too bad that installer doesnt have mfplat.dll ...
 echo ""
 echo "Done!"
-echo "Now you need to get mfplat.dll version 12.0.7601.23471 from elsewhere"
+echo "Now you need to get mfplat.dll version 12.0.7601.23471 from elsewhere and place it in your application directory"
