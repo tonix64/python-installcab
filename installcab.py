@@ -10,7 +10,8 @@ import shutil
 # Utils
 
 def cleanup():
-    shutil.rmtree(tmpdir)
+    if os.path.exists(tmpdir):
+        shutil.rmtree(tmpdir)
 
 def bad_exit(text):
     print(text)
