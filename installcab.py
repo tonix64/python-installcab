@@ -197,10 +197,10 @@ if __name__ == '__main__':
     # sanity checks
     if len(sys.argv) < 3:
         print("usage:")
-        print("  cabinstall.py cabfile component [wineprefix_path]")
+        print("  installcap.py cabfile component [wineprefix_path]")
         print("")
         print("example:")
-        print("  cabinstall.py ~/.cache/winetricks/win7sp1/windows6.1-KB976932-X86.exe x86_microsoft-windows-mediafoundation")
+        print("  installcab.py ~/.cache/winetricks/win7sp1/windows6.1-KB976932-X86.exe x86_microsoft-windows-mediafoundation")
         print("")
         sys.exit(0)
     if len(sys.argv) < 4 and not "WINEPREFIX" in os.environ:
