@@ -2,6 +2,8 @@
 
 Extract and install components from cab based installers
 
+This tool is intended to be used with [wine](https://winehq.org)
+
 ## Experimental
 
 The software is  **experimental** so you should try it in a fresh wineprefix or make a backup of your wineprefix just in case (at least windows folder and .reg files at the root of your wineprefix).
@@ -49,6 +51,7 @@ It does not aim to fully support cabinet installers, but is capable of installin
 
 - python
 - cabextract
+- wine
 
 ## License
 
