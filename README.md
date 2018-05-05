@@ -11,13 +11,21 @@ The software is  **experimental** so you should try it in a fresh wineprefix or 
 ## Usage:
 
 ```
-python installcab.py cabfile filter [wineprefix_path]
+python installcab.py [options] cabfile filter [wineprefix_path]
 ```
 
 - cabfile: an exe installer or cab file that can be extracted with cabextract
 - filter: a filter for the components inside the cab file (will match anywhere in available files inside the cabinet)
 - wineprefix_path: you can set this, otherwise it will try to get from your WINEPREFIX environment variable
 
+### Options
+
+-  --nocleanup: do not perform cleanup after running
+-  --noreg: do not import registry entries
+-  --nodll: do not install dlls into system dir
+-  --register: register dlls with regsrv32
+-  --stripdllpath: strip full path for dlls in registry so wine can find them through it's own resolver
+   
 ## Examples
 
 ```
