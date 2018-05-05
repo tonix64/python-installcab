@@ -40,6 +40,8 @@ python installcab.py ~/.cache/winetricks/win7sp1/windows6.1-KB976932-X64.exe wma
 
 will extract and install any manifest files and dlls with 'wmadmod' in their path.
 
+### install-mf examples
+
 You can also try the [install-mf.sh](install-mf.sh) file that installs WMF components from win7sp1 installer. There is also [install-mf-64.sh](install-mf-64.sh) for installing into a 64 bit wineprefix.
 
 Note you will need to run `winetricks mf` first so the installer will be cached (for now install-mf.sh does not download the installer, but relies on winetricks to have done it beforehand).
