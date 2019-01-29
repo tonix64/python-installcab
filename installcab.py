@@ -82,7 +82,7 @@ def get_winebin(arch):
 
 def check_dll_arch(dll_path):
     out = subprocess.check_output(['file', dll_path])
-    if 'x86-64' in out:
+    if b'x86-64' in out:
         return 'win64'
     else:
         return 'win32'
