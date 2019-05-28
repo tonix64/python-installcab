@@ -82,7 +82,7 @@ def get_winebin(arch):
 
 def check_dll_arch(dll_path):
     out = subprocess.check_output(['file', dll_path])
-    if 'x86-64' in out:
+    if b'x86-64' in out:
         return 'win64'
     else:
         return 'win32'
@@ -172,7 +172,7 @@ def process_manifest(file_name):
     arch = parse_manifest_arch(elmt)
     registry_keys = elmt.findall("{urn:schemas-microsoft-com:asm.v3}registryKeys")
     if len(registry_keys):
-        for registry_key in registry_keys[0].getchildren():
+        for registry_key in list(registry_keys[0]):
             key = process_key(registry_key.attrib["keyName"])
             out += "[%s]\n" % key
             for rv in registry_key.findall("{urn:schemas-microsoft-com:asm.v3}registryValue"):
