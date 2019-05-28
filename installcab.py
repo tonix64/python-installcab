@@ -124,17 +124,16 @@ def process_value(rv, arch):
     elif value_type == 'REG_NONE':
         value = None
     elif value_type == 'REG_EXPAND_SZ':
-        # not sure if we should replace this ones at this point:
-        # caps can vary in the pattern
-        #value = value.replace("%SystemRoot%", "C:\\windows")
-        #value = value.replace("%ProgramFiles%", "C:\\windows\\Program Files")
-        #value = value.replace("%WinDir%", "C:\\windows")
-        #value = value.replace("%ResourceDir%", "C:\\windows")
-        #value = value.replace("%Public%", "C:\\users\\Public")
-        #value = value.replace("%LocalAppData%", "C:\\windows\\Public\\Local Settings\\Application Data")
-        #value = value.replace("%AllUsersProfile%", "C:\\windows")
-        #value = value.replace("%UserProfile%", "C:\\windows")
-        #value = value.replace("%ProgramData%", "C:\\ProgramData")
+        # TODO: caps can vary in the pattern
+        value = value.replace("%SystemRoot%", "C:\\windows")
+        value = value.replace("%ProgramFiles%", "C:\\windows\\Program Files")
+        value = value.replace("%WinDir%", "C:\\windows")
+        value = value.replace("%ResourceDir%", "C:\\windows")
+        value = value.replace("%Public%", "C:\\users\\Public")
+        value = value.replace("%LocalAppData%", "C:\\windows\\Public\\Local Settings\\Application Data")
+        value = value.replace("%AllUsersProfile%", "C:\\windows")
+        value = value.replace("%UserProfile%", "C:\\windows")
+        value = value.replace("%ProgramData%", "C:\\ProgramData")
         value = "\"%s\"" % value
     elif value_type == 'REG_SZ':
         value = "\"%s\"" % value
